@@ -1,0 +1,13 @@
+<!--pages/kind/kind.wxml-->
+<view class="kind">
+  <view class="list">
+    <view class="item" wx:for="{{kind}}" wx:key="1">
+      <image class="kind-img" src="{{item.post.cover}}" mode="aspectFill"></image>
+      <view class="kind-info">
+        <text class="title">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+  <button bindtap="changeBright">变暗</button>
+  <button bindtap="addBright">变暗</button>
+</view>

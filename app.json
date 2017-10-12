@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/kind/kind",
     "pages/home/home",
     "pages/index/index",
     "pages/logs/logs"
@@ -21,8 +22,8 @@
         "text": "新拍"
       },
       {
-        "pagePath": "pages/logs/logs",
-        "text": "日志"
+        "pagePath": "pages/kind/kind",
+        "text": "分类"
       }
     ]
   }
