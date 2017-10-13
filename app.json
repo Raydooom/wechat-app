@@ -19,11 +19,27 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "新拍"
+        "text": "新拍",
+        "iconPath": "icon/new.png",
+        "selectedIconPath":"icon/new-active.png"
       },
       {
         "pagePath": "pages/kind/kind",
-        "text": "分类"
+        "text": "分类",
+        "iconPath": "icon/kind.png",
+        "selectedIconPath": "icon/kind-active.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "互动",
+        "iconPath": "icon/msg.png",
+        "selectedIconPath": "icon/msg-active.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "关于",
+        "iconPath": "icon/about.png",
+        "selectedIconPath": "icon/about-active.png"
       }
     ]
   }

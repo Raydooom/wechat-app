@@ -7,7 +7,43 @@ page {
 
 .kind {
   height: 100%;
+}
+
+.banner {
+  margin: 0 20rpx 20rpx;
+}
+
+.banner swiper, .banner swiper-item {
+  border-radius: 4rpx;
   overflow: hidden;
+  height: 400rpx;
+}
+
+.banner swiper-item {
+  position: relative;
+}
+
+.banner swiper-item .banner-text {
+  background: rgba(0, 0, 0, 0.6);
+  display: block;
+  width: 96%;
+  line-height: 56rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 2%;
+  color: #fff;
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.banner .slide-image {
+  overflow: hidden;
+  border-radius: 4px;
+  width: 100%;
+  height: 400rpx;
 }
 
 .item {
@@ -34,13 +70,13 @@ page {
   font-size: 32rpx;
   color: #111;
   font-weight: bold;
-  margin-top:20rpx;
+  margin-top: 20rpx;
   display: block;
 }
 
-.kind-info .album-name{
+.kind-info .album-name {
   font-size: 28rpx;
-  color:#666;
+  color: #666;
 }
 
 .kind-info .count {
@@ -50,4 +86,3 @@ page {
   right: 20rpx;
   top: 20rpx;
 }
-

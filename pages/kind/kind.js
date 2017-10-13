@@ -3,12 +3,15 @@ import server from '../../common/server';
 
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    banner:[],
+    indicatorDots: false,
+    autoplay: true,
+    interval: 5000,
+    duration:600
   },
 
   /**
@@ -75,6 +78,23 @@ Page({
    */
   getDate: function () {
     let that = this;
+    // banner请求
+    wx.request({
+      url: server + "/mainShow",
+      success: function (res) {
+        that.setData({
+          banner: res.data
+        })
+      },
+      error: function () {
+        wx.showToast({
+          title: '链接服务器失败！',
+          icon: 'warn',
+          duration: 2000
+        })
+      }
+    })
+    // 分类列表请求
     wx.request({
       url: server + "/kinds",
       success: function (res) {
@@ -85,7 +105,11 @@ Page({
         wx.stopPullDownRefresh();
       },
       error: function () {
-        
+        wx.showToast({
+          title: '链接服务器失败！',
+          icon: 'warn',
+          duration: 2000
+        })
       }
     })
   }
