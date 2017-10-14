@@ -1,0 +1,76 @@
+/* pages/album/album.wxss */
+page{
+  background: #222;
+}
+.page {
+  background: #222;
+  overflow: hidden;
+}
+
+.album-list {
+  margin-bottom: 2rpx;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 10rpx 10rpx;
+}
+
+.album-list .main-img {
+  width: 100%;
+  height: 440rpx;
+}
+
+.album-list .album-info {
+  padding: 10rpx 30rpx;
+}
+
+.album-info .title {
+  color: #222;
+  font-size: 32rpx;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.album-info .dis {
+  font-size: 28rpx;
+  display: block;
+  color: #666;
+  margin: 10rpx 0;
+  text-overflow: ellipsis;
+  display: -webkit-box;    
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.album-info .date {
+  display: block;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.handle {
+  padding: 10rpx 0;
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20rpx;
+}
+
+.handle view {
+  float: left;
+  font-size: 26rpx;
+  color: #666;
+  margin-right: 30rpx;
+}
+.handle view image,.date image{
+  display: inline-block;
+  width:30rpx;
+  height:30rpx;
+  vertical-align: middle;
+  margin-right:8rpx;
+}
+.date image{
+  width: 28rpx;
+  height: 28rpx;
+}

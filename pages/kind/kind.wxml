@@ -4,20 +4,22 @@
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#fff" circular="ture">
       <block wx:for="{{banner}}" wx:key="{{item.id}}">
         <swiper-item>
-          <image src="{{item.cover}}" class="slide-image" mode="aspectFill" />
-          <text class="banner-text">{{item.title}}</text>
+          <navigator url="../photo/photo?id={{item.id}}&title={{item.title}}">
+            <image src="{{item.cover}}" class="slide-image" mode="aspectFill" />
+            <text class="banner-text">{{item.title}}</text>
+          </navigator>
         </swiper-item>
       </block>
     </swiper>
   </view>
   <view class="list">
-    <view class="item" wx:for="{{kind}}" wx:key="1">
+    <navigator url='../album/album?id={{item.id}}&title={{item.kindName}}' class="item" wx:for="{{kind}}" wx:key="1">
       <image class="kind-img" src="{{item.kindCover}}" mode="aspectFill"></image>
       <view class="kind-info">
         <text class="title">{{item.kindName}}</text>
         <text class="album-name">{{item.localAlbum}}</text>
         <text class="count">{{item.albumLength}}</text>
       </view>
-    </view>
+    </navigator>
   </view>
 </view>

@@ -1,0 +1,6 @@
+<!--pages/photo/photo.wxml-->
+<view class="page">
+  <navigator url="../photoDetail/photoDetail?id={{item.id}}&title={{item.title}}" wx:for="{{photoList}}" wx:key="{{item.id}}" class="photo">
+     <image lazy-load="true" mode="aspectFill" src="{{item.img}}"></image> 
+  </navigator>
+</view>

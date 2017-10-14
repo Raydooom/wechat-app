@@ -1,0 +1,16 @@
+<!--pages/album/album.wxml-->
+<view class='page'>
+  <navigator class='album-list' url='../photo/photo?id={{item.id}}&title={{item.title}}' wx:for="{{albumList}}" wx:key="{{item.id}}">
+    <image class="main-img" mode="aspectFill" src="{{item.cover}}"></image>
+    <view class="album-info">
+      <text class="title">{{item.title}}</text>
+      <view class="date"><image src="../../icon/time.png"/><text>{{item.date}}</text></view>
+      <text class="dis">{{item.text}}</text>
+      <view class="handle">
+        <view class="views"><image src="../../icon/view.png"/>{{item.views}}</view>
+        <view class="praise"><image src="../../icon/like.png"/>{{item.praises}}</view>
+        <view class="comment"><image src="../../icon/comment.png"/>{{item.comments}}</view>
+      </view>
+    </view>
+  </navigator>
+</view>

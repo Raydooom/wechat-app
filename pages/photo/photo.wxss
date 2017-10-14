@@ -1,0 +1,17 @@
+/* pages/photo/photo.wxss */
+page{
+  background: #222;
+}
+.page{
+  overflow: hidden;
+}
+.page .photo{
+  float: left;
+  overflow: hidden;
+  width:183rpx;
+  height: 183rpx;
+  margin:3rpx;
+}
+.page .photo image{
+  max-width: 100%;
+}
