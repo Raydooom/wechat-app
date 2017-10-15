@@ -3,6 +3,5 @@
   "navigationBarTextStyle": "white",
   "navigationBarTitleText": "相册",
   "backgroundColor": "#222",
-  "backgroundTextStyle": "light",
-  "enablePullDownRefresh": true
+  "backgroundTextStyle": "light"
 }

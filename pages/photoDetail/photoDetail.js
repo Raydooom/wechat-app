@@ -66,13 +66,6 @@ Page({
   onReachBottom: function () {
   
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
   /**
    * 自定义事件
    */
@@ -88,7 +81,6 @@ Page({
           photo: result.data,
           loaded: true
         })
-        console.log(result)
       },
       error: function () {
         wx.showToast({
@@ -103,7 +95,6 @@ Page({
    * 查看图片
    */
   photoView: function (info){
-    console.log(info)
     let url = info.target.dataset.url;
     wx.previewImage({
       current: url, // 当前显示图片的http链接

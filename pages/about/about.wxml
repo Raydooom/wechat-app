@@ -1,0 +1,18 @@
+<!--pages/about/about.wxml-->
+<image class="bg" src="../../img/bg.jpg"></image>
+<view class="info-con">
+  <view class="personal-info">
+    <image class="me" src="../../img/me.jpg"></image>
+    <text class="name">王瑞冬</text>
+    <text class="profession">前端开发工程师</text>
+    <text class="info">一个喜欢摄影的前端开发工程师</text>
+    <view class="contact-way">
+      <view class="way"><text class="tit">work：</text><text class="text">2014-03</text></view>
+      <view class="way"><text class="tit">tel：</text><text class="text" bindtap='call'>13120199773</text></view>
+      <view class="way"><text class="tit">QQ：</text><text class="text">619281505</text></view>
+      <view class="way"><text class="tit">wechat：</text><text class="text">z791202293</text></view>
+      <view class="way"><text class="tit">web：</text><text class="text">https://raydom.wang</text></view>
+      
+    </view>
+  </view>
+</view>

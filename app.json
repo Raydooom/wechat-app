@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/index/index",
     "pages/home/home",
+    "pages/about/about",
     "pages/photoDetail/photoDetail",
     "pages/photo/photo",
     "pages/kind/kind",
@@ -39,7 +39,7 @@
         "selectedIconPath": "icon/msg-active.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/about/about",
         "text": "关于",
         "iconPath": "icon/about.png",
         "selectedIconPath": "icon/about-active.png"
