@@ -1,17 +1,17 @@
 {
   "pages":[
+    "pages/index/index",
     "pages/home/home",
     "pages/photoDetail/photoDetail",
     "pages/photo/photo",
     "pages/kind/kind",
     "pages/album/album",
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/message/message"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "最新拍摄",
+    "navigationBarTitleText": "我想学摄影",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
@@ -33,8 +33,8 @@
         "selectedIconPath": "icon/kind-active.png"
       },
       {
-        "pagePath": "pages/logs/logs",
-        "text": "互动",
+        "pagePath": "pages/message/message",
+        "text": "留言",
         "iconPath": "icon/msg.png",
         "selectedIconPath": "icon/msg-active.png"
       },

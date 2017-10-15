@@ -1,0 +1,24 @@
+<!--pages/message/message.wxml-->
+<view class="message-list">
+  <view class="main-img">
+    <image src="../../img/msg-img.jpg" mode="widthFix" />
+    <text class="main-msg">纸上得来终觉浅，绝知此事要躬行</text>
+    <text class="main-name">—— Raydom</text>
+  </view>
+  <view class="msgList">
+    <text class="count">共{{msgList.length}}条留言</text>
+    <view class="msg-item" wx:for="{{msgList}}" wx:key="{{item.id}}">
+      <image class="avatar" src="{{item.user_avatar}}"></image>
+      <view class="msg-con">
+        <text class="name">{{item.user_name}}</text>
+        <text class="msg">{{item.user_msg}}</text>
+        <text class="time">{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="form">
+    <image class="avatar" wx:if="{{hasUserInfo}}" src="{{userInfo.avatarUrl}}" />
+    <image class="avatar" wx:else src="../../icon/avatar.png" />
+    <input type="text" placeholder="请输入留言内容" value="{{msg}}" confirm-type="send" bindconfirm="sendMsg"/>
+  </view>
+</view>
