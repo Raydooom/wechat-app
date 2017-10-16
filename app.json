@@ -1,12 +1,12 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/message/message",
     "pages/about/about",
     "pages/photoDetail/photoDetail",
     "pages/photo/photo",
     "pages/kind/kind",
-    "pages/album/album",
-    "pages/message/message"
+    "pages/album/album"
   ],
   "window":{
     "backgroundTextStyle":"light",

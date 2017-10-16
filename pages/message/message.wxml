@@ -7,18 +7,21 @@
   </view>
   <view class="msgList">
     <text class="count">共{{msgList.length}}条留言</text>
-    <view class="msg-item" wx:for="{{msgList}}" wx:key="{{item.id}}">
-      <image class="avatar" src="{{item.user_avatar}}"></image>
+    <view class="msg-item" wx:for="{{msgList}}" wx:key="{{item.msgList.id}}">
+      <image class="avatar" src="{{item.msgList.user_avatar}}"></image>
       <view class="msg-con">
-        <text class="name">{{item.user_name}}</text>
-        <text class="msg">{{item.user_msg}}</text>
-        <text class="time">{{item.date}}</text>
+        <text class="name">{{item.msgList.user_name}}<!--<text>{{msgList.length-index}}</text>--></text>
+        <text class="msg">{{item.msgList.user_msg}}</text>
+        <view class="btn"><text class="time">{{item.msgList.date}}</text><view class="reply-btn" bindtap="reply" data-msgId="{{item.msgList.id}}" data-user="{{item.msgList.user_name}}"><image src="../../icon/comment.png"></image></view><!-- <view class="prise"><image src="../../icon/like.png"></image> 11</view> --></view>
+        <view class="reply-list" wx:if="{{!item.msgReply.length == 0}}">
+          <view class="reply-item" wx:for="{{item.msgReply}}" wx:key="{{item.id}}"><!--<image src="{{item.user_avatar}}"/>--><view class="reply-text"><text class="relpy-name">{{item.user_name}}：</text><text class="text">{{item.user_msg}}</text></view></view>
+        </view>
       </view>
     </view>
   </view>
   <view class="form">
     <image class="avatar" wx:if="{{hasUserInfo}}" src="{{userInfo.avatarUrl}}" />
     <image class="avatar" wx:else src="../../icon/avatar.png" />
-    <input type="text" placeholder="请输入留言内容" value="{{msg}}" confirm-type="send" bindconfirm="sendMsg"/>
+    <input type="text" focus="{{focus}}" bindblur="inputBlur" placeholder="{{placeHolder}}" value="{{msg}}" confirm-type="send" bindconfirm="sendMsg"/>
   </view>
 </view>
