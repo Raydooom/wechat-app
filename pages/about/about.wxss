@@ -23,7 +23,7 @@ page {
 .personal-info {
   background: #fff;
   position: relative;
-  margin: 160rpx 60rpx 0;
+  margin: 120rpx 60rpx 0;
   border-radius: 20rpx;
   padding-bottom: 40rpx;
 }
@@ -62,23 +62,37 @@ page {
   text-align: center;
 }
 
-.contact-way{
-  margin-top:40rpx;
-  border-top:2px solid #ddd;
+.contact-way {
+  margin-top: 40rpx;
+  border-top: 2px solid #ddd;
 }
-.contact-way .way{
+
+.contact-way .way {
   font-size: 26rpx;
-  margin:0 50rpx;
-  border-bottom:1px solid #ddd;
+  margin: 0 50rpx;
+  border-bottom: 1px solid #ddd;
   line-height: 80rpx;
   overflow: hidden;
 }
 
-.contact-way .way .tit{
-  color:#4963ae;
+.contact-way .way .tit {
+  color: #4963ae;
   float: left;
 }
-.contact-way .way .text{
+
+.contact-way .way .text {
   float: right;
   color: #666;
+}
+
+.service{
+  display: block;
+  width: 500rpx;
+  line-height: 72rpx;
+  margin:40rpx auto 0;
+  font-size: 28rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  border:1px solid #4963ae;
+  color: #4963ae;
 }
