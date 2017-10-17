@@ -1,75 +1,137 @@
 /* pages/message/message.wxss */
-page{
-  padding-bottom:110rpx;
+
+page {
+  padding-bottom: 110rpx;
 }
-.main-img{
+
+.main-img {
   background: #fff;
-  padding-bottom:40rpx;
+  padding-bottom: 40rpx;
 }
-.main-img image{
+
+.main-img image {
   width: 100%;
   display: block;
 }
-.main-msg{
+
+.main-msg {
   display: block;
-  padding:50rpx;
-  font-size:32rpx;
+  padding: 50rpx;
+  font-size: 32rpx;
   color: #222;
 }
-.main-name{
+
+.main-name {
   display: block;
   text-align: right;
   font-size: 28rpx;
   color: #666;
-  padding-right:50rpx;
+  padding-right: 50rpx;
 }
-.message-list{
+
+.message-list {
   min-height: 100%;
   background: #eee;
 }
-.count{
+
+.count {
   display: block;
   line-height: 80rpx;
-  padding:0 20rpx;
+  padding: 0 20rpx;
   font-size: 30rpx;
   background: #efefef;
-  border-top:1px solid #eee;
-  border-bottom:1px solid #eee;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 }
-.msgList .msg-item{
+
+.msgList .msg-item {
   background: #fff;
   margin-top: 1px;
   overflow: hidden;
-  padding:20rpx;
+  padding: 20rpx;
 }
-.msgList .msg-item .avatar{
-  width:80rpx;
-  height:80rpx;
+
+.msgList .msg-item .avatar {
+  width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
-  border:1px solid #eee;
+  border: 1px solid #eee;
   float: left;
 }
-.msgList .msg-item .msg-con{
+
+.msgList .msg-item .msg-con {
   width: 600rpx;
   float: left;
-  margin-left:20rpx;
+  margin-left: 20rpx;
 }
-.msg-con .name{
+
+.msg-con .name {
   font-size: 32rpx;
   color: #666;
   display: block;
-  line-height:60rpx;
 }
-.msg-con .msg{
+
+.msg-con .time {
+  font-size: 12px;
+  color: #999;
+}
+
+.msg-con .msg {
   display: block;
   font-size: 28rpx;
   color: #222;
   line-height: 40rpx;
-  padding:10rpx 0;
+  padding: 16rpx 0;
 }
-.msg-con .time{
-  font-size: 12px;
+
+.btn {
+  padding:20rpx 0;
+  padding-right: 30rpx;
+  overflow: hidden;
+}
+
+.btn view {
+  float: right;
+  margin-left: 40rpx;
+  font-size: 30rpx;
   color: #666;
+}
+
+.btn view image {
+  vertical-align: middle;
+  width: 42rpx;
+  height: 42rpx;
+}
+
+.reply-btn {
+  font-size: 28rpx;
+  color: #4963ae;
+}
+/*回复列表*/
+.reply-list{
+  background: #efefef;
+  border-radius: 8rpx;
+  padding:20rpx;
+}
+.reply-item{
+  font-size: 28rpx;
+  color: #555;
+}
+.reply-item image{
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+.reply-item{
+  padding:4rpx 0;
+  word-break:break-all;
+}
+.reply-item .relpy-name{
+  color: #4963ae;
+  font-size: 28rpx;
 }
 .form {
   position: fixed;
@@ -79,23 +141,25 @@ page{
   background: #fff;
   border-top: 1px solid #ddd;
 }
-.form .avatar{
+
+.form .avatar {
   display: inline-block;
-  width:68rpx;
+  width: 68rpx;
   height: 68rpx;
   vertical-align: middle;
   border-radius: 50%;
-  margin-left:30rpx;
+  margin-left: 30rpx;
 }
-.form input{
+
+.form input {
   vertical-align: middle;
   width: 550rpx;
   display: inline-block;
-  border:1px solid #eee;
+  border: 1px solid #eee;
   font-size: 28rpx;
-  margin:20rpx;
+  margin: 20rpx;
   line-height: 68rpx;
-  height:68rpx;
+  height: 68rpx;
   border-radius: 6rpx;
-  padding:0 20rpx;
+  padding: 0 20rpx;
 }
