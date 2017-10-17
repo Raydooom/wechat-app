@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/albumDetail/albumDetail",
     "pages/home/home",
     "pages/message/message",
     "pages/about/about",

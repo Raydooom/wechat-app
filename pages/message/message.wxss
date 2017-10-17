@@ -85,7 +85,7 @@ page {
 }
 
 .btn {
-  padding:20rpx 0;
+  padding: 20rpx 0;
   padding-right: 30rpx;
   overflow: hidden;
 }
@@ -107,17 +107,21 @@ page {
   font-size: 28rpx;
   color: #4963ae;
 }
+
 /*回复列表*/
-.reply-list{
+
+.reply-list {
   background: #efefef;
   border-radius: 8rpx;
-  padding:20rpx;
+  padding: 20rpx;
 }
-.reply-item{
+
+.reply-item {
   font-size: 28rpx;
   color: #555;
 }
-.reply-item image{
+
+.reply-item image {
   display: inline-block;
   width: 40rpx;
   height: 40rpx;
@@ -125,14 +129,17 @@ page {
   vertical-align: middle;
   margin-right: 10rpx;
 }
-.reply-item{
-  padding:4rpx 0;
-  word-break:break-all;
+
+.reply-item {
+  padding: 4rpx 0;
+  word-break: break-all;
 }
-.reply-item .relpy-name{
+
+.reply-item .relpy-name {
   color: #4963ae;
   font-size: 28rpx;
 }
+
 .form {
   position: fixed;
   bottom: 0;
