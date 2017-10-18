@@ -1,21 +1,30 @@
-//index.js
-//获取应用实例
-const app = getApp()
+// pages/albumComment/albumComment.js
 
+const app = getApp();
+import server from '../../common/server';
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    placeHolder: '请输入留言内容',
     focus: false,
+    placeHolder: '发表评论',
     reply: false,
     msgId: '',
     msg: ''
   },
-  onLoad: function () {
-    // 获取留言信息
-    this.getMsg();
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.setData({
+      id: options.id
+    })
+    this.getComments();
+    var that = this;
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -44,48 +53,57 @@ Page({
       })
     }
   },
-  onShareAppMessage: function () {
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    this.getComments();
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
 
   },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
   /**
-   * get msg list
+   * 获取相册评论
    */
-  getMsg: function () {
+  getComments: function () {
     var that = this;
     wx.request({
-      url: "https://api.raydom.wang/getMsg",
+      url: server + "/albumComments",
+      data: { id: that.data.id },
       success: function (res) {
         that.setData({
-          msgList: res.data
-        });
+          commentsData: res.data,
+          comments: res.data.comments.length
+        })
         wx.stopPullDownRefresh();
+        // 设置标题
+        wx.setNavigationBarTitle({
+          title: "评论（" + that.data.comments + "）"
+        });
       }
     })
   },
   /**
-   * user send msg
+   * 输入评论内容
    */
-  sendMsg: function (msg) {
+  sendComment: function (msg) {
     var that = this;
     if (msg.detail.value != "") {
       if (!that.data.reply) {
         // 发布留言
         wx.request({
-          url: "https://api.raydom.wang/sendMsg",
+          url: server + "/sendComments",
           data: {
+            albumId: that.data.id,
             userInfo: that.data.userInfo,
             msg: msg.detail.value
           },
           success: function (res) {
-            that.getMsg();
+            that.getComments();  // 重新获取留言内容
             that.setData({
               msg: ''
             })
@@ -93,6 +111,9 @@ Page({
               title: '留言成功',
               icon: 'success',
               duration: 2000
+            })
+            wx.pageScrollTo({
+              scrollTop: 0
             })
           }
         })
@@ -106,7 +127,7 @@ Page({
             msg: msg.detail.value
           },
           success: function (res) {
-            that.getMsg();
+            that.getComments(); // 刷新数据
             that.setData({
               msg: ''
             })
@@ -118,11 +139,10 @@ Page({
           }
         })
       }
-
     } else {
       wx.showModal({
         title: '提示',
-        content: '留言不能为空',
+        content: '评论不能为空',
         showCancel: false
       })
     }
@@ -143,15 +163,9 @@ Page({
    */
   inputBlur: function () {
     this.setData({
-      placeHolder: '请输入留言内容',
-      focus: true,
-      reply: false
+      placeHolder: '发表评论',
+      reply: false,
+      focus: false,
     })
   },
-  /**
-  * 页面相关事件处理函数--监听用户下拉动作
-  */
-  onPullDownRefresh: function () {
-    this.getMsg();
-  }
 })

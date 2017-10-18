@@ -1,26 +1,36 @@
 // pages/albumDetail/albumDetail.js
-const app = getApp()
+const app = getApp();
+import server from '../../common/server';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    id: 1,
+    kind:'',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    hasPraise: false,
-    praise: 0,
-    views: 21,
-    animationData: {},
-    animationData2:{},
-    focus: false
+    hasPraise: false, // 是否点赞
+    praises: 0, // 点赞数
+    views: 0, // 浏览量
+    comments: 0,  // 评论数
+    shares: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      id: options.id,
+      kind: options.kind
+    })
+    wx.setNavigationBarTitle({
+      title: options.title
+    });
+    this.getData()
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -53,82 +63,132 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
-  onReady: function () {
-    var that = this;
-    setTimeout(function () {
-      console.log(that.data.userInfo)
-    }, 2000)
-
-  },
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  onShow: function () {
+    this.getComments();
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    var that = this;
     return {
       success: function () {
-        
+        that.setData({
+          shares: that.data.shares + 1
+        })
+        wx.request({
+          url: server + "/albumShare",
+          data: {
+            id: that.data.id,
+            shares: that.data.shares
+          },
+          success: function (res) {
+            // console.log(res)
+          }
+        })
       }
     }
   },
+  /**
+   * 获取页面数据
+   */
+  getData: function () {
+    var that = this;
+    wx.request({
+      url: server + "/albumDetail",
+      data: { id: that.data.id },
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          pageData: res.data,
+          views: res.data.album.views,
+          praises: res.data.album.praises,
+          shares: res.data.album.shares
+        })
+        // 获取数据成功以后 调用浏览量统计
+        that.viewCount();
+        // 获取评论数据
+        that.getComments();
+      }
+    })
+  },
+  
+  /**
+   * 浏览量统计
+   */
+  viewCount: function () {
+    var that = this;
+    that.setData({
+      views: that.data.views + 1
+    })
+    wx.request({
+      url: server + "/albumViews",
+      data: {
+        id: that.data.id,
+        views: that.data.views
+      },
+      success: function (res) {
+        // console.log(res) 统计成功
+      }
+    })
+  },
+
   /** 
    * 用户点赞 
    */
-  prise: function (el) {
+  prises: function (el) {
     var that = this;
-    var currentPraise = parseInt(el.currentTarget.dataset.praise);
     if (!that.data.hasPraise) {
       that.setData({
-        praise: currentPraise++,
+        praises: that.data.praises + 1,
         hasPraise: true
       })
     } else {
       that.setData({
-        praise: currentPraise - 1,
+        praises: that.data.praises - 1,
         hasPraise: false
       })
     }
-  },
-  /**
-   * 评论
-   */
-  comment: function () {
-    var animation = wx.createAnimation({
-      duration: 500,
-      timingFunction: 'ease',
-    })
-    animation.bottom("0").step()
-    this.setData({
-      animationData: animation.export()
+    wx.request({
+      url: server + "/albumPraise",
+      data: {
+        id: that.data.id,
+        praises: that.data.praises
+      },
+      success: function (res) {
+        // console.log(res)
+      }
     })
   },
   /**
-   * 隐藏评论框
+   * 获取相册评论
    */
-  hideCommentForm: function () {
-    var animation = wx.createAnimation({
-      duration: 300,
-      timingFunction: 'ease',
+  getComments: function () {
+    var that = this;
+    wx.request({
+      url: server + "/albumComments",
+      data: { id: that.data.id },
+      success: function (res) {
+        that.setData({
+          comments: res.data.comments.length
+        })
+      }
     })
-    animation.bottom("-270rpx").step()
-    this.setData({
-      animationData: animation.export()
+  },
+  
+  /**
+   * 图片预览
+   */
+  viewPhoto: function (el) {
+    var imgs = [];
+    var photos = this.data.pageData.albumPhoto;
+    for (var item in photos) {
+      imgs.push(photos[item].img);
+    }
+    wx.previewImage({
+      current: el.target.dataset.url,
+      urls: imgs
     })
   }
 })

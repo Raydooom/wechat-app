@@ -26,5 +26,8 @@ Page({
         })
       }
     })
+  },
+  onShareAppMessage: function () {
+
   }
 })

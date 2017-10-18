@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    id: '',
+    kind:''
   },
 
   /**
@@ -16,71 +17,45 @@ Page({
   onLoad: function (options) {
     // 获取url传值
     // 设置标题
-    let kindName = options.title;
     wx.setNavigationBarTitle({
-      title: kindName
+      title: options.title
     });
 
     // 根据id查询相册列表
-    let id = options.id;
-    this.getData(id);
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+    this.setData({
+      id: options.id,
+      kind: options.title
+    })
+    this.getData();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getData();
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+    this.getData();
   },
   /**
    * 自定义事件
    */
-  getData: function (id) {
+  getData: function () {
     let that = this;
     wx.request({
       url: server + "/kinds/album",
-      data:{
-        id:id
+      data: {
+        id: that.data.id
       },
-      success:function(result){
+      success: function (result) {
         that.setData({
-          albumList:result.data
+          albumList: result.data
         })
+        wx.stopPullDownRefresh();
       },
       error: function () {
         wx.showToast({
@@ -90,5 +65,8 @@ Page({
         })
       }
     })
+  },
+  onShareAppMessage: function () {
+
   }
 })

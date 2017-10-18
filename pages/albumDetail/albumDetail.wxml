@@ -1,46 +1,22 @@
 <!--pages/albumDetail/albumDetail.wxml-->
-<view class="page" bindtap="hideCommentForm">
+<view class="page">
   <view class="album-detail">
     <view class="album">
-      <text class="title">文章标题</text>
-      <view class="date">2017-10-20 20:20:20
+      <text class="title">{{pageData.album.title}}</text>
+      <view class="date">{{pageData.album.date}}
         <text class="author">Raydom</text>
       </view>
-      <text class="description">Swiper(Swiper master)是目前应用较广泛的移动端网页触摸内容滑动js插件。 Swiper中文网提供Swiper在线演示、Swiper中文教程、Swiper中文APi、Swiper下载。</text>
+      <text class="description">{{pageData.album.text}}</text>
     </view>
     <view class="photos">
-      <view class="photo-item" wx:for="1111" wx:key="item.index">
-        <text class="photo-title">文章标题</text>
-        <image class="photo" src="https://api.raydom.wang/images/cover1.jpg" mode="widthFix" bindtap="viewPhoto"></image>
-        <text class="photo-text">Swiper(Swiper master)是目前应用较广泛的移动端网页触摸内容滑动js插件。 Swiper中文网提供Swiper在线演示、Swiper中文教程、Swiper中文APi、Swiper下载。</text>
+      <view class="photo-item" wx:for="{{pageData.albumPhoto}}" wx:key="item.index">
+        <text class="photo-title">{{item.title}}</text>
+        <image class="photo" src="{{item.img}}" data-url="{{item.img}}" mode="widthFix" bindtap="viewPhoto"></image>
+        <text class="photo-text">{{item.description}}</text>
       </view>
     </view>
+    <view class="keywords" wx:if="{{pageData.album.keywords != ''}}">关键词：{{pageData.album.keywords}}</view>
     <text class="end">———— EDN ————</text>
-  </view>
-  <view class="comment-list">
-    <text class="count">共{{msgList.length}}条评论</text>
-    <view class="msg-item" wx:for="{{msgList}}" wx:key="{{item.msgList.id}}">
-      <image class="avatar" src="{{item.msgList.user_avatar}}"></image>
-      <view class="msg-con">
-        <text class="name">{{item.msgList.user_name}}<!--<text>{{msgList.length-index}}</text>--></text>
-        <text class="msg">{{item.msgList.user_msg}}</text>
-        <view class="btn">
-          <text class="time">{{item.msgList.date}}</text>
-          <view class="reply-btn" bindtap="reply" data-msgId="{{item.msgList.id}}" data-user="{{item.msgList.user_name}}">
-            <image src="../../icon/comment.png"></image>
-          </view>
-          <!-- <view class="prise"><image src="../../icon/like.png"></image> 11</view> --></view>
-        <view class="reply-list" wx:if="{{!item.msgReply.length == 0}}">
-          <view class="reply-item" wx:for="{{item.msgReply}}" wx:key="{{item.id}}">
-            <!--<image src="{{item.user_avatar}}"/>-->
-            <view class="reply-text">
-              <text class="relpy-name">{{item.user_name}}：</text>
-              <text class="text">{{item.user_msg}}</text>
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
   </view>
 </view>
 <view class="footer-bar">
@@ -49,31 +25,26 @@
       <image src="../../icon/view.png"></image>
       <text>{{views}}</text>
     </view>
-    <view class="footer-btn" bindtap="prise" data-praise="1">
+    <view class="footer-btn" bindtap="prises" data-praises="{{praises}}">
       <block wx:if="{{!hasPraise}}">
         <image src="../../icon/like.png"></image>
-        <text>{{praise}}</text>
+        <text>{{praises}}</text>
       </block>
       <block wx:else>
         <image src="../../icon/like-on.png"></image>
-        <text class="praised">{{praise}}</text>
+        <text class="praised">{{praises}}</text>
       </block>
     </view>
-    <view class="footer-btn" bindtap="comment">
-      <image src="../../icon/comment.png"></image>
-      <text>2110</text>
-    </view>
+    <navigator url="../albumComment/albumComment?id={{id}}">
+      <view class="footer-btn">
+        <image src="../../icon/comment.png"></image>
+        <text>{{comments}}</text>
+      </view>
+    </navigator>
     <view class="footer-btn share-icon">
       <image src="../../icon/share-icon.png"></image>
-      <text>3110</text>
+      <text>{{shares}}</text>
       <button class="share-btn" open-type="share"></button>
     </view>
   </view>
-</view>
-<view class="comment-form" animation="{{animationData}}">
-  <view class="user-info">
-    <image src="{{userInfo.avatarUrl}}" wx:if="{{hasUserInfo}}"></image>
-    <text>{{userInfo.nickName}}</text>
-  </view>
-  <input  />
 </view>

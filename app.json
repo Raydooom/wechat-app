@@ -1,12 +1,13 @@
 {
   "pages":[
+    "pages/kind/kind",
     "pages/albumDetail/albumDetail",
-    "pages/home/home",
+    "pages/albumComment/albumComment",
     "pages/message/message",
+    "pages/home/home",
     "pages/about/about",
     "pages/photoDetail/photoDetail",
     "pages/photo/photo",
-    "pages/kind/kind",
     "pages/album/album"
   ],
   "window":{
