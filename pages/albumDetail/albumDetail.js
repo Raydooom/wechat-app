@@ -99,7 +99,6 @@ Page({
       url: server + "/albumDetail",
       data: { id: that.data.id },
       success: function (res) {
-        console.log(res)
         that.setData({
           pageData: res.data,
           views: res.data.album.views,

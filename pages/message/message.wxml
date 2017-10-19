@@ -1,7 +1,7 @@
 <!--pages/message/message.wxml-->
 <view class="message-list">
   <view class="main-img">
-    <image src="../../img/msg-img.jpg" mode="widthFix" />
+    <image wx:if="{{loaded}}" src="{{mainImg}}" mode="widthFix" />
     <text class="main-msg">纸上得来终觉浅，绝知此事要躬行</text>
     <text class="main-name">—— Raydom</text>
   </view>

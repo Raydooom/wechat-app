@@ -1,5 +1,4 @@
 import server from '../../common/server';
-
 Page({
   data: {
     imgList: "",

@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+import server from '../../common/server';
 
 Page({
   data: {
@@ -8,6 +9,8 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     placeHolder: '请输入留言内容',
+    mainImg: '',
+    loaded: false,
     focus: false,
     reply: false,
     msgId: '',
@@ -48,7 +51,7 @@ Page({
 
   },
   getUserInfo: function (e) {
-    console.log(e)
+    // console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -61,12 +64,21 @@ Page({
   getMsg: function () {
     var that = this;
     wx.request({
-      url: "https://api.raydom.wang/getMsg",
+      url: server + "/getMsg",
       success: function (res) {
         that.setData({
           msgList: res.data
         });
         wx.stopPullDownRefresh();
+      }
+    })
+    wx.request({
+      url: server + "/other",
+      success: function (res) {
+        that.setData({
+          loaded: true,
+          mainImg: res.data[0].value
+        })
       }
     })
   },
@@ -75,11 +87,12 @@ Page({
    */
   sendMsg: function (msg) {
     var that = this;
-    if (msg.detail.value != "") {
+    var str = msg.detail.value.replace(/ /g, '');
+    if (str != "") {
       if (!that.data.reply) {
         // 发布留言
         wx.request({
-          url: "https://api.raydom.wang/sendMsg",
+          url: server + "/sendMsg",
           data: {
             userInfo: that.data.userInfo,
             msg: msg.detail.value
@@ -99,7 +112,7 @@ Page({
       } else {
         // 回复某人留言
         wx.request({
-          url: "https://api.raydom.wang/replyMsg",
+          url: server + "/replyMsg",
           data: {
             msgId: that.data.msgId,
             userInfo: that.data.userInfo,
@@ -144,7 +157,7 @@ Page({
   inputBlur: function () {
     this.setData({
       placeHolder: '请输入留言内容',
-      focus: true,
+      focus: false,
       reply: false
     })
   },
