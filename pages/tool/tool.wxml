@@ -1,0 +1,22 @@
+<!--pages/tool/index/index.wxml-->
+<view class="tool-page">
+  <view class='user-info'>
+    <image src="{{userAvatar}}" />
+    <text>{{userName}}</text>
+  </view>
+  <view class="tool-list">
+    <view class="tool-item" bindtap='cardNav'>
+      <image mode='aspectFill' src="../../img/msg-img.jpg">
+      </image>
+      <text>明信片制作</text>
+    </view>
+  </view>
+  <view class="menu-list">
+    <navigator class='menu' url='../about/about'>
+      <image src='../../icon/developer.png' />关于开发者</navigator>
+    <navigator class='menu' url='../attention/attention'>
+      <image src='../../icon/logo.png' />关注我想学摄影</navigator>
+    <!-- <navigator class='menu' url='../attention/attention'>
+      <image src='../../icon/share-icon2.png' />分享给好友</navigator> -->
+  </view>
+</view>

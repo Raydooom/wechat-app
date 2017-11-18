@@ -1,0 +1,84 @@
+page {
+  border-top: 1px solid #efefef;
+}
+
+.tool-page {
+  padding: 40rpx;
+}
+
+.tool-page .user-info image {
+  display: inline-block;
+  width: 80rpx;
+  height: 80rpx;
+  vertical-align: middle;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+
+.tool-page .user-info text {
+  display: inline-block;
+  color: #111;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.tool-list {
+  overflow: hidden;
+}
+
+.tool-list .tool-item {
+  width: 100%;
+  float: left;
+  margin: 30rpx 0;
+  overflow: hidden;
+  height: 200rpx;
+  position: relative;
+  border-radius: 10rpx;
+}
+
+.tool-list .tool-item image {
+  width: 100%;
+  display: block;
+  height: 100%;
+  border-radius: 10rpx;
+}
+
+.tool-list .tool-item text {
+  display: block;
+  text-align: center;
+  font-size: 36rpx;
+  position: absolute;
+  width: 100%;
+  line-height:  200rpx;
+  height: 200rpx;
+  top: 0;
+  color: #fff;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.menu-list {
+  padding-top: 40rpx;
+}
+
+.service {
+  display: none;
+}
+
+.menu-list .menu {
+  display: block;
+  line-height: 80rpx;
+  height: 80rpx;
+  padding: 0 20rpx;
+  color: #222;
+  font-size: 32rpx;
+  background: none;
+  opacity: 1;
+}
+.menu-list .menu image{
+  display: inline-block;
+  width: 32rpx;
+  height: 32rpx;
+  vertical-align: middle;
+  margin-right:20rpx;
+}

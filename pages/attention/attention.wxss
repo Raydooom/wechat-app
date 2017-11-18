@@ -1,0 +1,24 @@
+.title {
+  font-size: 32rpx;
+  color: #222;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  padding: 60rpx 0 30rpx;
+}
+
+.text {
+  padding: 0 40rpx;
+  color: #333;
+  font-size: 28rpx;
+  display: block;
+  line-height: 50rpx;
+  text-indent: 2em;
+
+}
+.code{
+  width:400rpx;
+  height: 400rpx;
+  margin:40rpx auto;
+  display: block;
+}

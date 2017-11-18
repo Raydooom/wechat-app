@@ -77,7 +77,7 @@ Page({
       success: function (res) {
         that.setData({
           loaded: true,
-          mainImg: res.data[0].value
+          mainImg: res.data.value
         })
       }
     })

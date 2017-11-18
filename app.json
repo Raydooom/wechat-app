@@ -2,13 +2,17 @@
   "pages":[
     "pages/home/home",
     "pages/kind/kind",
+    "pages/album/album",
     "pages/albumDetail/albumDetail",
     "pages/albumComment/albumComment",
     "pages/message/message",
+    "pages/tool/tool",
     "pages/about/about",
-    "pages/photoDetail/photoDetail",
-    "pages/photo/photo",
-    "pages/album/album"
+    "pages/attention/attention",
+    "pages/selectImg/selectImg",
+    "pages/editText/editText",
+    "pages/saveCard/saveCard",
+    "pages/viewCard/viewCard"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -41,10 +45,10 @@
         "selectedIconPath": "icon/msg-active.png"
       },
       {
-        "pagePath": "pages/about/about",
-        "text": "关于",
-        "iconPath": "icon/about.png",
-        "selectedIconPath": "icon/about-active.png"
+        "pagePath": "pages/tool/tool",
+        "text": "工具",
+        "iconPath": "icon/tool.png",
+        "selectedIconPath": "icon/tool-active.png"
       }
     ]
   }
